@@ -2,8 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../css/GameCard.css'
 
-export default function GameCard ({ gameId, title, genre, date, image }) {
+export default function GameCard ({ gameId, title, genre, date, image, itemCount = 0 }) {
     const formattedDate = date ? new Date(date).toLocaleDateString() : 'N/A'
+    const itemLabel = itemCount === 1 ? 'item' : 'items'
 
     return (
         <Link className='game-card-link' to={`/inventory/${gameId}`}>
@@ -15,8 +16,7 @@ export default function GameCard ({ gameId, title, genre, date, image }) {
                         <span className='game-card-genre'>{genre}</span>
                     </div>
                     <div className='game-card-footer'>
-                        {/** TODO: Count # of items in each game. */}
-                        <p># items</p>
+                        <p>{itemCount} {itemLabel}</p>
                         <p>{formattedDate}</p>
                     </div>
                 </div>

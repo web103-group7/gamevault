@@ -61,6 +61,7 @@ export default function GameLibrary () {
                             genre={game.genre}
                             date={game.date_added}
                             image={game.image}
+                            itemCount={game.item_count}
                         />
                     )}
                 </div>
