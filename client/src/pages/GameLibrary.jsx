@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Searchbar from '../components/Searchbar'
 import GameCard from '../components/GameCard'
 import { getGames } from '../services/gameAPI'
+import '../css/GameLibrary.css'
 
 export default function GameLibrary () {
     const [allGames, setAllGames] = useState([])
@@ -36,19 +37,22 @@ export default function GameLibrary () {
     }
 
     return (
-        <div>
-            <h1>Your Game Library</h1>
-            <h2>Manage your game collection and inventory items</h2>
-            <div>
+        <div className='game-library-page'>
+            <header className='game-library-hero'>
+                <h1>Your Game Library</h1>
+                <h2>Manage your game collection and inventory items</h2>
+            </header>
+
+            <div className='game-library-toolbar'>
                 <Searchbar
                     allGames={allGames}
                     setGames={setGames}
                 />
-                <button>+ Add Game</button>
+                <button className='game-library-add-button'>+ Add Game</button>
             </div>
 
             {(games && games.length != 0) ?
-                <div>
+                <div className='game-library-grid'>
                     {games.map((game, _) => 
                         <GameCard
                             key={game.game_id}
@@ -61,7 +65,7 @@ export default function GameLibrary () {
                     )}
                 </div>
                 :
-                <div>No games to display.</div>
+                <div className='game-library-empty'>No games to display.</div>
             }
         </div>
     )
