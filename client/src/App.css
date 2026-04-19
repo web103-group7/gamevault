@@ -1,5 +1,7 @@
 .app {
-    background: url('./assets/hero.jpg');
+    background:
+        linear-gradient(180deg, rgba(6, 9, 16, 0.4), rgba(6, 9, 16, 0.78)),
+        url('./assets/hero.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

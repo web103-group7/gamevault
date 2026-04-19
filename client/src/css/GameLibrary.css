@@ -1,0 +1,105 @@
+.game-library-page {
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	padding: 3rem 2.5rem 4rem;
+	color: #f5f0df;
+	background: linear-gradient(180deg, rgba(8, 12, 22, 0.72), rgba(8, 12, 22, 0.92));
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	border-radius: 0;
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+	backdrop-filter: blur(10px);
+}
+
+.game-library-hero {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin-bottom: 1.5rem;
+}
+
+.game-library-hero h1 {
+	margin: 0;
+	font-size: clamp(2.6rem, 4vw, 4rem);
+	line-height: 0.95;
+	letter-spacing: -0.05em;
+	color: #fff8e8;
+}
+
+.game-library-hero h2 {
+	margin: 0;
+	max-width: 42rem;
+	font-size: 1rem;
+	font-weight: 400;
+	color: rgba(245, 240, 223, 0.76);
+}
+
+.game-library-toolbar {
+	display: flex;
+	align-items: flex-end;
+	gap: 1rem;
+	margin-bottom: 1.75rem;
+	flex-wrap: nowrap;
+}
+
+.game-library-add-button {
+	flex: 0 0 auto;
+	margin: 0;
+	width: auto;
+	border: 0;
+	border-radius: 999px;
+	background: linear-gradient(135deg, #ffd86a, #f0a61c 72%, #cf7f11);
+	color: #1b1206;
+	font-weight: 800;
+	padding: 0.9rem 1.4rem;
+	box-shadow: 0 18px 35px rgba(240, 166, 28, 0.28);
+	cursor: pointer;
+}
+
+.game-library-add-button:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 22px 42px rgba(240, 166, 28, 0.34);
+}
+
+.game-library-grid {
+	display: grid;
+	column-gap: 1.5rem;
+	row-gap: 2.25rem;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	align-items: start;
+}
+
+.game-library-empty {
+	padding: 1.5rem 1.75rem;
+	border-radius: 1.25rem;
+	border: 1px dashed rgba(255, 255, 255, 0.22);
+	background: rgba(12, 15, 25, 0.55);
+	color: rgba(245, 240, 223, 0.82);
+}
+
+@media (max-width: 1100px) {
+	.game-library-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 768px) {
+	.game-library-page {
+		padding: 2rem 1rem 3rem;
+		border-radius: 0;
+	}
+
+	.game-library-toolbar {
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	.game-library-add-button {
+		width: 100%;
+		text-align: center;
+	}
+
+	.game-library-grid {
+		grid-template-columns: 1fr;
+	}
+}
