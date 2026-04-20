@@ -30,11 +30,11 @@ We were inspired by how many games have large and complex inventory systems, but
 
 ## Features
 
-### Game Library
+### ✅ Game Library
 
 Users can add games to their personal library and open a dedicated inventory page for each game.
 
-[gif goes here]
+<img src="https://github.com/web103-group7/gamevault/blob/main/milestone3.gif">
 
 ### Item Management
 
