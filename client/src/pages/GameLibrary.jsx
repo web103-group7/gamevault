@@ -15,7 +15,6 @@ export default function GameLibrary () {
         const loadGames = async () => {
             try {
                 const data = await getGames()
-                console.log(data)
                 setGames(Array.isArray(data) ? data : [])
                 setAllGames(Array.isArray(data) ? data : [])
             } catch (error) {
