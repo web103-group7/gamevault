@@ -3,19 +3,23 @@ import { Modal } from '@mui/material'
 import { addGame } from '../services/gameAPI'
 import '../css/AddGameModal.css'
 
-export default function AddGameModal({ open, handleClose }) {
+export default function AddGameModal({ open, handleClose, onGameAdded }) {
     const [title, setTitle] = useState('')
     const [genre, setGenre] = useState('')
     const [imageURL, setImageURL] = useState('')
     const [showTitleErrorMessage, setShowTitleErrorMessage] = useState(false)
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (!title) {
             setShowTitleErrorMessage(true)
             return
         }
-        addGame(title, genre, imageURL)
-        handleClose()
+
+        const createdGame = await addGame(title, genre, imageURL)
+        if (createdGame) {
+            onGameAdded?.(createdGame)
+            handleClose()
+        }
     }
 
     return (

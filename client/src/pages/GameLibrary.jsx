@@ -15,6 +15,11 @@ export default function GameLibrary () {
     const [open, setOpen] = useState(false)
     const handleOpen = () => { setOpen(true) }
     const handleClose = () => { setOpen(false) }
+    const handleGameAdded = (newGame) => {
+        // When a new game is added, update the list of games displayed on frontend.
+        setGames((currentGames) => [newGame, ...currentGames])
+        setAllGames((currentGames) => [newGame, ...currentGames])
+    }
 
     useEffect(() => {
         // Use `getGames` API to fetch games from database
@@ -29,7 +34,7 @@ export default function GameLibrary () {
                 setLoading(false)
             }
         }
-
+        
         loadGames()
     }, [])
 
@@ -59,8 +64,8 @@ export default function GameLibrary () {
             {open &&
                 <AddGameModal
                     open={open}
-                    handleOpen={handleOpen}
                     handleClose={handleClose}
+                    onGameAdded={handleGameAdded}
                 />
             }
 

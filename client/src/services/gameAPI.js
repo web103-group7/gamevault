@@ -30,9 +30,11 @@ async function addGame(title, genre, imageURL) {
             throw new Error(errorText || 'Failed to add game to database')
         }
         console.log('Added game to database successfully! ☺︎')
+        return response.json()
     }
     catch (error) {
         console.error(error.message || 'Failed to add game to database. ☹︎')
+        return null
     }
 }
 
