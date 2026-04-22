@@ -1,20 +1,9 @@
 import React, { useState } from 'react'
 import { Modal } from '@mui/material'
 import { addGame } from '../services/gameAPI'
+import '../css/AddGameModal.css'
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-}
-
-export default function AddGameModal({ open, handleOpen, handleClose }) {
+export default function AddGameModal({ open, handleClose }) {
     const [title, setTitle] = useState('')
     const [genre, setGenre] = useState('')
     const [imageURL, setImageURL] = useState('')
@@ -30,27 +19,42 @@ export default function AddGameModal({ open, handleOpen, handleClose }) {
     }
 
     return (
-        <div>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby='modal-modal-title'
-                aria-describedby='modal-modal-description'
-            >
-                <div style={style}>
-                    <h1>Add New Game</h1>
-                    <h2>Add a game to your library. A starter inventory will be automatically created.</h2>
-                    {/** GAME TITLE */}
-                    <label htmlFor='title'>Title *</label>
+        <Modal
+            className='add-game-modal-root'
+            open={open}
+            onClose={handleClose}
+            aria-labelledby='modal-modal-title'
+            aria-describedby='modal-modal-description'
+        >
+            <div className='add-game-modal'>
+                <div className='add-game-modal-header'>
+                    <h1 id='modal-modal-title'>Add New Game</h1>
+                    <button
+                        className='add-game-modal-close'
+                        onClick={handleClose}
+                        aria-label='Close add game modal'
+                    >
+                        x
+                    </button>
+                </div>
+
+                <h2 id='modal-modal-description'>
+                    Add a game to your library. A starter inventory will be automatically created.
+                </h2>
+
+                <div className='add-game-modal-field'>
+                    <label htmlFor='title'>Game Name *</label>
                     <input
                         id='title'
                         type='text'
                         placeholder='e.g., Elden Ring'
                         value={title}
-                        onChange={(e) => { setTitle(e.target.value); setShowTitleErrorMessage(false) }}
+                        onChange={(e) => { setTitle(e.target.value); setShowTitleErrorMessage(false); }}
                     />
-                    {showTitleErrorMessage && <p>Title cannot be empty.</p>}
-                    {/** GAME GENRE */}
+                    {showTitleErrorMessage && <p className='add-game-modal-error'>Title cannot be empty.</p>}
+                </div>
+
+                <div className='add-game-modal-field'>
                     <label htmlFor='genre'>Genre</label>
                     <input
                         id='genre'
@@ -59,20 +63,24 @@ export default function AddGameModal({ open, handleOpen, handleClose }) {
                         placeholder='e.g., Action RPG'
                         onChange={(e) => { setGenre(e.target.value) }}
                     />
-                    {/** GAME IMAGE */}
-                    <label htmlFor='image-url'>ImageURL</label>
+                </div>
+
+                <div className='add-game-modal-field'>
+                    <label htmlFor='image-url'>Image URL</label>
                     <input
                         id='image-url'
                         type='text'
                         value={imageURL}
+                        placeholder='https://example.com/image-name.jpg'
                         onChange={(e) => { setImageURL(e.target.value) }}
                     />
-                    <div>
-                        <button onClick={handleClose}>Cancel</button>
-                        <button onClick={handleSubmit}>Add Game</button>
-                    </div>
                 </div>
-            </Modal>
-        </div>
+
+                <div className='add-game-modal-actions'>
+                    <button className='add-game-modal-button-secondary' onClick={handleClose}>Cancel</button>
+                    <button className='add-game-modal-button-primary' onClick={handleSubmit}>Add Game</button>
+                </div>
+            </div>
+        </Modal>
     )
 }
