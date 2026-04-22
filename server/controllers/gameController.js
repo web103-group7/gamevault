@@ -24,9 +24,12 @@ async function getGames (req, res) {
 // POST /games - add new game to database
 async function addGame (req, res) {
     try {
-        const { title, genre, imageURL } = req.body
+        var { title, genre, imageURL } = req.body
         if (!title) {
             return res.status(400).json({ error: 'Game title is required.'})
+        }
+        if (!imageURL) {
+            imageURL = 'https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg'
         }
 
         const query = `
