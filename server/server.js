@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import favicon from 'serve-favicon'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import { initializeDatabase } from './config/initialize.js'
 
 // TODO: Import routers
 import gameRouter from './routes/gameRouter.js'
@@ -47,6 +48,17 @@ if (process.env.NODE_ENV === 'production') {
     )
 }
 
-app.listen(PORT, () => {
-    console.log(`server listening on http://localhost:${PORT}`)
-})
+async function startServer() {
+    try {
+        await initializeDatabase()
+        app.listen(PORT, () => {
+            console.log(`server listening on http://localhost:${PORT}`)
+        })
+    }
+    catch (error) {
+        console.error('Server startup failed during DB initialization.', error)
+        process.exit(1)
+    }
+}
+
+startServer()
