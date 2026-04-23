@@ -3,7 +3,7 @@
 CodePath WEB103 Final Project  
 Designed and developed by: [Naiya Patel, Kelly Yu, Noor Al Azzawi]
 
-🔗 Link to deployed app:
+🔗 Link to deployed app: https://gamevault-pjjy.onrender.com/
 
 ## About
 
