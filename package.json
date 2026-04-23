@@ -2,9 +2,9 @@
   "name": "gamevault",
   "type": "module",
   "scripts": {
-    "predev": "node server/config/reset.js",
+    "predev": "if [ \"$NODE_ENV\" != \"production\" ]; then node server/config/reset.js; fi",
     "dev": "concurrently \"cd client && vite\" \"cd server && nodemon server\"",
-    "start": "cd server && node server",
+    "start": "node server/server.js",
     "build": "cd client && vite build"
   },
   "dependencies": {
